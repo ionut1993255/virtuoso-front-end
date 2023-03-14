@@ -314,7 +314,12 @@ header input {
   }
   h1 {
   top: 40px;
-}
+  }
+  .songs-list {
+    position: absolute;
+    top: 650px;
+    margin: 0 auto;
+  }
 }
 
 
