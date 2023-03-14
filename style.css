@@ -41,7 +41,7 @@ select:focus > option:checked {
 
 h1 {
     position: absolute;
-    top: 90px;
+    top: 80px;
     font-size: 44px;
     transform: translateX(-1800px);
     animation: heading forwards ease-in 1s;
@@ -133,6 +133,23 @@ header input {
 .keys-checkbox input:checked::before {
   left: 35px;
   background: rgb(63, 183, 63);
+}
+
+.show-songs {
+  font-size: 1.19rem;
+  font-weight: 600;
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: #501e1e;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: inset -5px 5px 20px rgba(252, 197, 197, 0.836);
+}
+
+.show-songs:hover {
+  color:rgb(63, 183, 63);
 }
 
 .piano-keys {
@@ -241,6 +258,6 @@ header input {
     margin-bottom: 2.4rem;
   }
   h1 {
-  top: 70px;
+  top: 40px;
 }
 }
