@@ -69,7 +69,7 @@ h1 {
     }
 }
 
-.songs-list {
+.song-list {
   margin-left: 4rem;
   width: 400px;
   height: 419.78px;
@@ -77,12 +77,12 @@ h1 {
   border-radius: 0.4rem;
   background-color: white;
   box-shadow: 0px 25px 20px -20px #88bd91, 25px 0 20px -20px #88bd91;
-  overflow: scroll;
-  animation: songs-list forwards ease-in 1s;
+  overflow: auto;
+  animation: song-list forwards ease-in 1s;
   transform: translateX(1800px);
 }
 
-@keyframes songs-list {
+@keyframes song-list {
   to {
       transform: translateX(0);
   }
@@ -153,13 +153,13 @@ header input {
 }
 
 .volume-slider input::-webkit-slider-thumb {
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: rgb(63, 183, 63);
-    box-shadow: -407px 0 0 400px rgb(63, 183, 63);
-    cursor: pointer;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(63, 183, 63);
+  box-shadow: -407px 0 0 400px rgb(63, 183, 63);
+  cursor: pointer;
 }
 
 .keys-checkbox input {
@@ -190,7 +190,7 @@ header input {
   background: rgb(63, 183, 63);
 }
 
-.show-songs-list {
+.show-song-list {
   font-size: 1.19rem;
   font-weight: 600;
   padding: 0.4rem;
@@ -203,7 +203,7 @@ header input {
   box-shadow: inset -5px 5px 20px rgba(252, 197, 197, 0.836);
 }
 
-.show-songs-list:hover {
+.show-song-list:hover {
   color:rgb(63, 183, 63);
 }
 
@@ -315,7 +315,7 @@ header input {
   h1 {
   top: 40px;
   }
-  .songs-list {
+  .song-list {
     position: absolute;
     top: 650px;
     margin: 0 auto;
