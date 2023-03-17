@@ -221,12 +221,43 @@ header input {
   background: rgb(63, 183, 63);
 }
 
+.btn-record {
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+}
+
+.btn-stop-record {
+  background-color: white;
+  border-radius: 0.3rem;
+ 
+}
+
+.btn-record, .btn-stop-record {
+  width:1.8rem;
+  height: 1.8rem;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.btn-record:hover {
+  background-color: rgb(176, 13, 13);;
+}
+
+.btn-stop-record svg:hover {
+  fill:rgb(176, 13, 13);
+}
+
 .show-song-list {
-  margin-top: 0.5rem;
+  padding: 0.2rem;
+  padding-block-end:0.2rem;
+  margin-top: 1rem;
   border-radius: 0.4rem;
   border: none;
   cursor: pointer;
-  width: 50%;
+  width:2.1rem;
+  height: 2.1rem;
+  margin-left:4rem;
 }
 
 .show-song-list svg:hover {
@@ -301,7 +332,10 @@ header input {
     flex-direction: column;
   }
   header :where(.column) {
-    margin-bottom: 13px;
+    margin-bottom: 1.5rem;
+  }
+  header .volume-slider {
+    margin-bottom: 0;
   }
   .volume-slider input {
     max-width: 100px;
@@ -336,10 +370,13 @@ header input {
   }
   .select {
     margin-top: 1.2rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: 2rem;
   }
   h1 {
   top: 40px;
+  }
+  .show-song-list {
+    margin-top: 0.5rem;
   }
   .song-list {
     position: absolute;
@@ -348,5 +385,4 @@ header input {
     height: fit-content;
   }
 }
-
 
