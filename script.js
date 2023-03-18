@@ -6,6 +6,9 @@ const displaySongs = document.querySelector('.show-song-list');
 const songList = document.querySelector('.song-list');
 const btnRecord = document.querySelector('.btn-record');
 const btnStopRecord = document.querySelector('.btn-stop-record');
+const form = document.querySelector('form');
+const btnSave = document.querySelector('.btn-save');
+const btnCancel = document.querySelector('.btn-cancel');
 
 let defaultPath = "/tunes/acoustic_grand_piano/"; // By default the instrument is "Acoustic Grand Piano"
 
@@ -61,6 +64,20 @@ const stopRecord = () => {
     btnRecord.classList.remove('record'); // Stop recording by pressing the btnStopRecord
 }
 
+const showForm = () => {
+    form.classList.add('active'); // Display the form after pressing the btnStopRecord
+}
+
+const saveSong = (e) => {
+    e.preventDefault(); // We prevent the browser default behavior
+    form.classList.remove('active'); // Remove the form after pressing the btnSave 
+}
+
+const cancelSong = (e) => {
+    e.preventDefault(); // We prevent the browser default behavior
+    form.classList.remove('active'); // Remove the form after pressing the btnCancel
+}
+
 keysCheckbox.addEventListener("click", showHideKeys);
 volumeSlider.addEventListener("input", handleVolume);
 document.addEventListener("keydown", pressedKey);
@@ -68,3 +85,6 @@ instrumentSelector.addEventListener('change', chosenInstrument);
 displaySongs.addEventListener('click', displaySong);
 btnRecord.addEventListener('click', record);
 btnStopRecord.addEventListener('click', stopRecord);
+btnStopRecord.addEventListener('click', showForm);
+btnSave.addEventListener('click', saveSong);
+btnCancel.addEventListener('click', cancelSong);
