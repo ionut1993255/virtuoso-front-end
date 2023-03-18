@@ -7,6 +7,7 @@ const songList = document.querySelector('.song-list');
 const btnRecord = document.querySelector('.btn-record');
 const btnStopRecord = document.querySelector('.btn-stop-record');
 const form = document.querySelector('form');
+const overlay = document.querySelector('.overlay');
 const btnSave = document.querySelector('.btn-save');
 const btnCancel = document.querySelector('.btn-cancel');
 
@@ -51,10 +52,19 @@ const chosenInstrument = (e) => {
     defaultPath = '/tunes/' + e.target.value + "/";
 }
 
+const getSongs = () => {
+    fetch("http://127.0.0.1:8000/songs")
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}
+
 const displaySong = () => {
     songList.classList.toggle('active'); 
     // Toggling active class from songList when we click the button displaySongs
+    getSongs();
 }
+
+
 
 const record = () => {
     btnRecord.classList.add('record'); // Start recording by pressing the btnRecord
@@ -66,16 +76,24 @@ const stopRecord = () => {
 
 const showForm = () => {
     form.classList.add('active'); // Display the form after pressing the btnStopRecord
+    overlay.classList.add('active'); // Display the overlay between the form & keyboard
+    document.removeEventListener("keydown", pressedKey);
 }
 
 const saveSong = (e) => {
     e.preventDefault(); // We prevent the browser default behavior
-    form.classList.remove('active'); // Remove the form after pressing the btnSave 
+    closePopup();
 }
 
 const cancelSong = (e) => {
     e.preventDefault(); // We prevent the browser default behavior
+    closePopup();
+}
+
+const closePopup = () => {
     form.classList.remove('active'); // Remove the form after pressing the btnCancel
+    overlay.classList.remove('active'); // Remove the overlay
+    document.addEventListener("keydown", pressedKey);
 }
 
 keysCheckbox.addEventListener("click", showHideKeys);

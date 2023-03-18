@@ -341,7 +341,25 @@ header input {
   color: #888888;
 }
 
-form {
+.overlay {
+  display: none;
+  position: absolute;
+  z-index: 500;
+  opacity: 0.5;
+  background-color: #000;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+}
+
+.overlay.active {
+  display:block;
+}
+
+form.popup {
+  z-index: 1000;
   display:none;
   position: absolute;
   width: 300px;
@@ -393,8 +411,12 @@ form input:focus {
 }
 
 @media screen and (max-width: 815px) {
+  body {
+    flex-direction: column;
+  }
   .wrapper {
     padding: 25px;
+    /* position: inherit; */
   }
   header {
     flex-direction: column;
@@ -423,9 +445,6 @@ form input:focus {
     height: 180px;
     width: 60px;
   }
-}
-
-@media screen and (max-width: 815px) {
   .piano-keys .key:nth-child(13),
   .piano-keys .key:nth-child(14),
   .piano-keys .key:nth-child(15),
@@ -441,19 +460,17 @@ form input:focus {
     margin-bottom: 2rem;
   }
   h1 {
-  top: 40px;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    position: inherit;
   }
   .show-song-list {
     margin-top: 0.5rem;
   }
   .song-list {
-    position: absolute;
-    top: 650px;
-    margin: 0 auto;
-    height: fit-content;
+    position: relative;  
+    margin: 20px auto; 
+    overflow: auto;
+    /* height: fit-content; */
   }
 }
-
-
-
-
