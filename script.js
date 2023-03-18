@@ -4,6 +4,8 @@ keysCheckbox = document.querySelector(".keys-checkbox input");
 const instrumentSelector = document.querySelector('.instrument-selector');
 const displaySongs = document.querySelector('.show-song-list');
 const songList = document.querySelector('.song-list');
+const btnRecord = document.querySelector('.btn-record');
+const btnStopRecord = document.querySelector('.btn-stop-record');
 
 let defaultPath = "/tunes/acoustic_grand_piano/"; // By default the instrument is "Acoustic Grand Piano"
 
@@ -51,9 +53,18 @@ const displaySong = () => {
     // Toggling active class from songList when we click the button displaySongs
 }
 
+const record = () => {
+    btnRecord.classList.add('record'); // Start recording by pressing the btnRecord
+}
+
+const stopRecord = () => {
+    btnRecord.classList.remove('record'); // Stop recording by pressing the btnStopRecord
+}
+
 keysCheckbox.addEventListener("click", showHideKeys);
 volumeSlider.addEventListener("input", handleVolume);
 document.addEventListener("keydown", pressedKey);
 instrumentSelector.addEventListener('change', chosenInstrument);
 displaySongs.addEventListener('click', displaySong);
-
+btnRecord.addEventListener('click', record);
+btnStopRecord.addEventListener('click', stopRecord);

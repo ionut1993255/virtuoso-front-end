@@ -221,9 +221,28 @@ header input {
   background: rgb(63, 183, 63);
 }
 
-.btn-record {
+.btn-record{
   background-color: red;
   margin-right: 0.3rem;
+}
+
+.record{
+	animation-name: pulse;
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes pulse{
+	0%{
+		box-shadow: 0px 0px 5px 0px rgba(203, 11, 11, 0.934);
+	}
+	65%{
+		box-shadow: 0px 0px 5px 13px rgba(203, 11, 11, 0.934);
+	}
+	90%{
+		box-shadow: 0px 0px 5px 13px rgba(173,0,0,0);
+	}
 }
 
 .btn-stop-record {
@@ -383,4 +402,5 @@ header input {
     height: fit-content;
   }
 }
+
 
