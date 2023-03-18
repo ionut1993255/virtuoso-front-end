@@ -54,7 +54,7 @@ const chosenInstrument = (e) => {
     defaultPath = '/tunes/' + e.target.value + "/";
 }
 
-const getSongs = () => {
+const getSongs = () => { // Get the songs from the database through an API call
     fetch("http://127.0.0.1:8000/songs")
     .then((response) => response.text())
     .then((data) =>  
@@ -62,7 +62,7 @@ const getSongs = () => {
     );
 }
 
-const buildSongList = (data) => {
+const buildSongList = (data) => { // Build the song list
     songUList.innerHTML = '';
     data.forEach((song, index) => {
         songUList.appendChild(
@@ -71,7 +71,7 @@ const buildSongList = (data) => {
     });
 }
 
-const buildSongItem = (id, index, name, length) => {
+const buildSongItem = (id, index, name, length) => { // Build the song item
     let child = document.createElement("li");
     child.classList.add("song");
     child.innerHTML =  `<span class="song-title">${index}. ${name}: ${length}s</span>
@@ -152,16 +152,16 @@ const showForm = () => {
     document.removeEventListener("keydown", pressedKey);
 }
 
-const saveSong = (e) => {
+const saveSong = (e) => { // Save the song by pressing the button Save
     e.preventDefault(); // We prevent the browser default behavior
 
     sendCreateSongRequest(input.value, 55);
-
+    input.value='';
 
     closePopup();
 }
 
-const sendCreateSongRequest = (name, length) => {
+const sendCreateSongRequest = (name, length) => { // Sending create song request through an API call
     fetch("http://127.0.0.1:8000/songs", {
         method: "POST",
         body: JSON.stringify({
@@ -175,7 +175,7 @@ const sendCreateSongRequest = (name, length) => {
     .then( displaySong() );
 }
 
-const cancelSong = (e) => {
+const cancelSong = (e) => { // Cancel the song by pressing the button Cancel
     e.preventDefault(); // We prevent the browser default behavior
     closePopup();
 }

@@ -41,33 +41,33 @@ select:focus > option:checked {
 }
 
 h1 {
-    position: absolute;
-    top: 80px;
-    font-size: 44px;
-    transform: translateX(-1800px);
-    animation: heading forwards ease-in 1s;
-    text-shadow:0 8px 8px #88bd91;
+  position: absolute;
+  top: 80px;
+  font-size: 44px;
+  transform: translateX(-1800px);
+  animation: heading forwards ease-in 1s;
+  text-shadow:0 8px 8px #88bd91;
 }
 
 @keyframes heading {
-    to {
-        transform: translateX(0);
-    }
+  to {
+      transform: translateX(0);
+  }
 }
 
 .wrapper {
-    padding: 35px 40px;
-    border-radius: 20px;
-    background-color:#501e1e;
-    transform: translateX(1800px);
-    animation: wrapper forwards ease-in 1s;
-    box-shadow: 0px 25px 20px -20px #88bd91, 25px 0 20px -20px #88bd91;
+  padding: 35px 40px;
+  border-radius: 20px;
+  background-color:#501e1e;
+  transform: translateX(1800px);
+  animation: wrapper forwards ease-in 1s;
+  box-shadow: 0px 25px 20px -20px #88bd91, 25px 0 20px -20px #88bd91;
   }
 
 @keyframes wrapper {
-    to {
-        transform: translateX(0);
-    }
+  to {
+      transform: translateX(0);
+  }
 }
 
 .song-list {
@@ -85,9 +85,9 @@ h1 {
 }
 
 .song-list .song-title {
-    width: 60%;
-    max-width: 60%;
-    overflow-x: auto;
+  width: 60%;
+  max-width: 60%;
+  overflow-x: auto;
 }
 
 .song-list.active {
@@ -414,37 +414,46 @@ form input:focus {
   body {
     flex-direction: column;
   }
+
   .wrapper {
     padding: 25px;
-    /* position: inherit; */
   }
+
   header {
     flex-direction: column;
   }
+
   header :where(.column) {
     margin-bottom: 1.5rem;
   }
+
   header .volume-slider {
     margin-bottom: 0;
   }
+
   .volume-slider input {
     max-width: 100px;
   }
+
   .piano-keys {
     margin-top: 20px;
   }
+
   .piano-keys .key:where(:nth-child(9), :nth-child(10)) {
     display: none;
   }
+
   .piano-keys .black {
     height: 100px;
     width: 40px;
     margin: 0 -20px 0 -20px;
   }
+
   .piano-keys .white {
     height: 180px;
     width: 60px;
   }
+
   .piano-keys .key:nth-child(13),
   .piano-keys .key:nth-child(14),
   .piano-keys .key:nth-child(15),
@@ -452,25 +461,29 @@ form input:focus {
   .piano-keys .key :nth-child(17) {
     display: none;
   }
+
   .piano-keys .white {
     width: 50px;
   }
+
   .select {
     margin-top: 1.2rem;
     margin-bottom: 2rem;
   }
+
   h1 {
     margin-top: 3rem;
     margin-bottom: 1rem;
     position: inherit;
   }
+
   .show-song-list {
     margin-top: 0.5rem;
   }
+
   .song-list {
     position: relative;  
     margin: 20px auto; 
     overflow: auto;
-    /* height: fit-content; */
   }
 }
