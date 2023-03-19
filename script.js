@@ -25,7 +25,7 @@ let notesPlayed = [];
 
 const startChronometer = () => { // Start chronometer
   startTime = new Date().getTime();
-  intervalId = setInterval(updateElapsedTime, 1000);
+  intervalId = setInterval(updateElapsedTime, 100);
 }
 
 const stopChronometer = () => { // Stop chronometer
@@ -34,7 +34,7 @@ const stopChronometer = () => { // Stop chronometer
 
 const updateElapsedTime = () => { // Update elapsed time
   const currentTime = new Date().getTime();
-  elapsedTime = Math.floor((currentTime - startTime) / 1000);
+  elapsedTime = Math.floor((currentTime - startTime) / 100);
 }
 
 const playTune = (key) => {
@@ -106,16 +106,16 @@ let pbIntervalId;
 
 const pbStartChronometer = (data) =>{ // Playback start chronometer
   pbStartTime = new Date().getTime();
-  pbIntervalId = setInterval(() => pbUpdateElapsedTime(data), 1000);
+  pbIntervalId = setInterval(() => pbUpdateElapsedTime(data), 100);
 }
 
 const pbStopChronometer = () => { // Playback stop chronometer
     clearInterval(pbIntervalId);
 }
 
-const pbUpdateElapsedTime = (data) => { // Playback update elapsed time
+const pbUpdateElapsedTime = (data) => { 
   const currentTime = new Date().getTime();
-  pbElapsedTime = Math.floor((currentTime - pbStartTime), 1000);
+  pbElapsedTime = Math.floor((currentTime - pbStartTime) / 100);
   data.forEach((noteObject, index) => {
     if (noteObject.time === pbElapsedTime) {
         instrumentSelector.value = noteObject.instrument;
@@ -124,13 +124,13 @@ const pbUpdateElapsedTime = (data) => { // Playback update elapsed time
   });
 }
 
-const playback = (songId) => { // Playback
+const playback = (songId) => {
     fetch(`http://127.0.0.1:8000/notes/${songId}`)
     .then((response) => response.json())
     .then((data) => playSong(data));
 }
 
-const playSong = (data) => { // Play Song
+const playSong = (data) => {
     resetValues();
     pbStartChronometer(data);
 }
@@ -221,7 +221,7 @@ const showForm = () => {
 const saveSong = (e) => { // Save the song by pressing the button Save
     e.preventDefault(); // We prevent the browser default behavior
     if (input.value === "") {
-        alert("Name must be filled out.");
+        alert("Name must be filled out");
         return false;
       }
 
@@ -229,13 +229,13 @@ const saveSong = (e) => { // Save the song by pressing the button Save
     closePopup();
 }
 
-const resetValues = () => { // Reset values
+const resetValues = () => {
     input.value='';
     elapsedTime = 0;
     notesPlayed = [];
 }
 
-const saveNotes = () => { // Save notes
+const saveNotes = () => {
     fetch("http://127.0.0.1:8000/notes", {
         method: "POST",
         body: JSON.stringify(notesPlayed),
@@ -267,7 +267,7 @@ const cancelSong = (e) => { // Cancel the song by pressing the button Cancel
     resetValues();
 }
 
-const deleteSong = (songId) => { // Delete song
+const deleteSong = (songId) => {
     resetValues();
     pbStopChronometer();
     fetch(`http://127.0.0.1:8000/songs/${songId}`, {
@@ -276,7 +276,7 @@ const deleteSong = (songId) => { // Delete song
             "Content-type": "application/json; charset=UTF-8",
         }
     });
-    getSongs();
+    getSongs()
 }
 
 const closePopup = () => {
