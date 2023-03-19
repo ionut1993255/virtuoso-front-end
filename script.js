@@ -124,7 +124,7 @@ const pbUpdateElapsedTime = (data) => {
   });
 }
 
-const playback = (songId) => {
+const playback = (songId) => { // Playback
     fetch(`http://127.0.0.1:8000/notes/${songId}`)
     .then((response) => response.json())
     .then((data) => playSong(data));
@@ -229,13 +229,13 @@ const saveSong = (e) => { // Save the song by pressing the button Save
     closePopup();
 }
 
-const resetValues = () => {
+const resetValues = () => { // Reset values
     input.value='';
     elapsedTime = 0;
     notesPlayed = [];
 }
 
-const saveNotes = () => {
+const saveNotes = () => { // Save notes
     fetch("http://127.0.0.1:8000/notes", {
         method: "POST",
         body: JSON.stringify(notesPlayed),
@@ -267,7 +267,7 @@ const cancelSong = (e) => { // Cancel the song by pressing the button Cancel
     resetValues();
 }
 
-const deleteSong = (songId) => {
+const deleteSong = (songId) => { // Delete song
     resetValues();
     pbStopChronometer();
     fetch(`http://127.0.0.1:8000/songs/${songId}`, {
