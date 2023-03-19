@@ -113,7 +113,7 @@ const pbStopChronometer = () => { // Playback stop chronometer
     clearInterval(pbIntervalId);
 }
 
-const pbUpdateElapsedTime = (data) => { 
+const pbUpdateElapsedTime = (data) => { // Playback update elapsed time
   const currentTime = new Date().getTime();
   pbElapsedTime = Math.floor((currentTime - pbStartTime) / 100);
   data.forEach((noteObject, index) => {
@@ -130,7 +130,7 @@ const playback = (songId) => { // Playback
     .then((data) => playSong(data));
 }
 
-const playSong = (data) => {
+const playSong = (data) => { // Play song
     resetValues();
     pbStartChronometer(data);
 }
