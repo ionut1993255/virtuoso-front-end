@@ -439,10 +439,6 @@ form input:focus {
     margin-top: 20px;
   }
 
-  .piano-keys .key:where(:nth-child(9), :nth-child(10)) {
-    display: none;
-  }
-
   .piano-keys .black {
     height: 100px;
     width: 40px;
@@ -454,11 +450,18 @@ form input:focus {
     width: 60px;
   }
 
-  .piano-keys .key:nth-child(13),
   .piano-keys .key:nth-child(14),
   .piano-keys .key:nth-child(15),
   .piano-keys .key:nth-child(16),
-  .piano-keys .key :nth-child(17) {
+  .piano-keys .key:nth-child(17), 
+  .piano-keys .key:nth-child(18), 
+  .piano-keys .key:nth-child(19), 
+  .piano-keys .key:nth-child(20), 
+  .piano-keys .key:nth-child(21), 
+  .piano-keys .key:nth-child(22), 
+  .piano-keys .key:nth-child(23), 
+  .piano-keys .key:nth-child(24), 
+  .piano-keys .key:nth-child(25) {
     display: none;
   }
 
@@ -485,6 +488,6 @@ form input:focus {
     position: relative;  
     margin: 20px auto; 
     overflow: auto;
-    width:400px;
+    width:450px;
   }
 }
