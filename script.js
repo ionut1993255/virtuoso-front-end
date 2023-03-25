@@ -221,7 +221,7 @@ const showForm = () => {
 const saveSong = (e) => { // Save the song by pressing the button Save
     e.preventDefault(); // We prevent the browser default behavior
     if (input.value === "") {
-        alert("Name must be filled out");
+        alert("Name must be filled out.");
         return false;
       }
 

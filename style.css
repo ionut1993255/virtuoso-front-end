@@ -72,8 +72,8 @@ h1 {
 
 .song-list {
   display: none;
-  margin-left: 4rem;
-  width: 400px;
+  margin-left: 1.2rem;
+  width: 350px;
   height: 419.78px;
   border:1px solid #501e1e;
   border-radius: 0.4rem;
@@ -485,5 +485,6 @@ form input:focus {
     position: relative;  
     margin: 20px auto; 
     overflow: auto;
+    width:400px;
   }
 }
