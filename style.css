@@ -469,6 +469,10 @@ form input:focus {
     width: 50px;
   }
 
+  .overlay {
+   min-height:146vh;
+  }
+
   .select {
     margin-top: 1.2rem;
     margin-bottom: 2rem;
