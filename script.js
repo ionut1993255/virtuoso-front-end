@@ -83,6 +83,10 @@ const chosenInstrument = (e) => {
     defaultPath = '/tunes/' + e.target.value + "/";
 }
 
+const changeInstrument = (newInstrument) => {
+    defaultPath = '/tunes/' + newInstrument + "/";
+}
+
 const getSongs = () => { // Get the songs from the database through an API call
     fetch("http://127.0.0.1:8000/songs")
     .then((response) => response.text())
@@ -116,15 +120,17 @@ const pbStopChronometer = () => { // Playback stop chronometer
 const pbUpdateElapsedTime = (data) => { // Playback update elapsed time
   const currentTime = new Date().getTime();
   pbElapsedTime = Math.floor((currentTime - pbStartTime) / 100);
-  data.forEach((noteObject, index) => {
+  data.forEach(noteObject => {
     if (noteObject.time === pbElapsedTime) {
         instrumentSelector.value = noteObject.instrument;
-        playTune(noteObject.note)
+        changeInstrument(noteObject.instrument);
+        playTune(noteObject.note);
     }
   });
 }
 
 const playback = (songId) => { // Playback
+    clearInterval(pbIntervalId);
     fetch(`http://127.0.0.1:8000/notes/${songId}`)
     .then((response) => response.json())
     .then((data) => playSong(data));
