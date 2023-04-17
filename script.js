@@ -1,6 +1,6 @@
 const pianoKeys = document.querySelectorAll(".piano-keys .key");
-volumeSlider = document.querySelector(".volume-slider input");
-keysCheckbox = document.querySelector(".keys-checkbox input");
+const volumeSlider = document.querySelector(".volume-slider input");
+const keysCheckbox = document.querySelector(".keys-checkbox input");
 const instrumentSelector = document.querySelector('.instrument-selector');
 const displaySongs = document.querySelector('.show-song-list');
 const songList = document.querySelector('.song-list');
