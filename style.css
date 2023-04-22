@@ -18,6 +18,7 @@ body {
  div p {
   margin-bottom: 0.3rem;
   color:white;
+  text-align: center;
 } 
 
 .instrument-selector {
@@ -42,7 +43,7 @@ select:focus > option:checked {
 
 h1 {
   position: absolute;
-  top: 80px;
+  top: 60px;
   font-size: 44px;
   transform: translateX(-1800px);
   animation: heading forwards ease-in 1s;
@@ -57,7 +58,7 @@ h1 {
 
 .wrapper {
   padding: 35px 40px;
-  border-radius: 20px;
+  border-radius: 8px;
   background-color:#501e1e;
   transform: translateX(1800px);
   animation: wrapper forwards ease-in 1s;
@@ -74,7 +75,7 @@ h1 {
   display: none;
   margin-left: 1.2rem;
   width: 350px;
-  height: 419.78px;
+  height: 461.41px;
   border:1px solid #501e1e;
   border-radius: 0.4rem;
   background-color: white;
@@ -178,47 +179,93 @@ header input {
   border-radius: 30px;
 }
 
+.volume-slider {
+  flex-direction: column;
+}
+
 .volume-slider input {
   appearance: none;
   overflow: hidden;
+  border-radius: 4px;
 }
 
 .volume-slider input::-webkit-slider-thumb {
-  appearance: none;
+  appearance:none;
   width: 15px;
   height: 15px;
-  border-radius: 50%;
-  background-color: rgb(63, 183, 63);
+  border-radius: 4px;
+  background-color: white;
   box-shadow: -407px 0 0 400px rgb(63, 183, 63);
+  border:2px solid rgb(63, 183, 63);
   cursor: pointer;
 }
 
-.keys-checkbox input {
-  height: 30px;
-  width: 60px;
-  cursor: pointer;
-  appearance: none;
+.switch {
+  font-size: 17px;
   position: relative;
-  background: white;
+  display: inline-block;
+  width: 100px;
+  height: 2em;
 }
 
-.keys-checkbox input::before {
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "Off";
+  height: 90%;
+  width: 48%;
+  left: 2%;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0 -1.31em 1.31em -1.31em rgba(0, 0, 0, 0.3) inset, 0 0 1px 0 rgba(0, 0, 0, 0.1);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+  transition: .4s;
+}
+
+.slider:after {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 5px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgb(30, 108, 30);
-  transform: translateY(-50%);
-  transition: all 0.3s ease;
-  
+  top: -7px;
+  left: -7px;
+  right: -7px;
+  bottom: -7px;
+  border-radius: 1.71em;
+  z-index: -1;
 }
 
-.keys-checkbox input:checked::before {
-  left: 35px;
-  background: rgb(63, 183, 63);
+.switch input:checked + .slider:before {
+  content: "On";
+  transform: translateX(100%);
+  color: white;
+  background-color: rgb(63, 183, 63);
+}
+
+.switch input {
+  display: none;
+}
+
+.keys-checkbox {
+  flex-direction: column;
+  gap:5px;
 }
 
 .btn-record{
@@ -302,7 +349,7 @@ header input {
   height: 140px;
   margin: 0 -22px 0 -22px;
   border-radius: 0 0 5px 5px;
-  background: linear-gradient(#333, #000);
+  background: linear-gradient(#222, #000);
 }
 
 .piano-keys .black.active {
@@ -470,7 +517,7 @@ form input:focus {
   }
 
   .overlay {
-   min-height:147vh;
+   min-height:162vh;
   }
 
   .select {

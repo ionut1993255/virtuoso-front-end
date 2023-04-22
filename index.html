@@ -13,25 +13,34 @@
     <div class="wrapper">
       <header>
         <div class="column volume-slider">
-          <span>Volume</span
-          ><input type="range" min="0" max="1" value="0.5" step="any" />
+          <span>Volum</span>
+          <p>
+            - <input type="range" min="0" max="1" value="0.5" step="any" /> +
+          </p>
         </div>
         <div class="select">
-          <p>Choose your instrument</p>
+          <p>Alege instrumentul</p>
           <select class="instrument-selector">
-            <option value="acoustic_grand_piano">Acoustic Grand Piano</option>
-            <option value="electric_piano">Electric Piano</option>
-            <option value="acoustic_guitar_nylon">Acoustic Guitar Nylon</option>
-            <option value="accordion">Accordion</option>
-            <option value="alto_sax">Alto Saxophone</option>
+            <option value="acoustic_grand_piano">Pian acustic</option>
+            <option value="electric_piano">Pian electric</option>
+            <option value="acoustic_guitar_nylon">Chitară acustică</option>
+            <option value="accordion">Acordeon</option>
+            <option value="alto_sax">Saxofon alto</option>
             <option value="clarinet">Clarinet</option>
-            <option value="brass">Brass</option>
-            <option value="violin">Violin</option>
+            <option value="brass">Alămuri</option>
+            <option value="violin">Vioară</option>
           </select>
         </div>
         <div>
           <div class="column keys-checkbox">
-            <span>Show keys</span><input type="checkbox" checked />
+            <span>Afișează tastele</span
+            ><label class="switch">
+              <input type="checkbox" />
+              <div class="slider">
+                <span>On</span>
+                <span>Off</span>
+              </div>
+            </label>
           </div>
           <button class="btn-record"></button>
           <button class="btn-stop-record">
@@ -93,11 +102,11 @@
       </ul>
     </div>
     <form action="" class="popup">
-      <label for="">Save your song here</label>
+      <label for="">Denumește-ți cântecul aici</label>
       <input type="text" />
       <div>
-        <button class="btn-save">Save</button>
-        <button class="btn-cancel">Cancel</button>
+        <button class="btn-save">Salvează</button>
+        <button class="btn-cancel">Anulează</button>
       </div>
     </form>
     <div class="overlay"></div>
