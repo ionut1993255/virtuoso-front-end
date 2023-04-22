@@ -18,12 +18,14 @@ body {
  div p {
   margin-bottom: 0.3rem;
   color:white;
-  text-align: center;
+  font-size:1.19rem;
+  font-weight:500;
 } 
 
 .instrument-selector {
   background: white;
   font-weight: 600;
+  font-size:1rem;
   color:#501e1e;
   cursor: pointer;
   border: none;
@@ -35,6 +37,7 @@ body {
 option {
   color: #501e1e;
   font-weight: 600;
+  font-size:1rem;
 }
 
 select:focus > option:checked { 
@@ -169,7 +172,6 @@ header .column {
 
 header span {
   font-weight: 500;
-  margin-right: 15px;
   font-size: 1.19rem;
   color:white;
 }
@@ -226,12 +228,12 @@ header input {
 
 .slider:before {
   position: absolute;
-  content: "Off";
+  content: "On";
   height: 90%;
   width: 48%;
   left: 2%;
   border-radius: 10px;
-  background-color: red;
+  background-color: rgb(63, 183, 63);
   color: white;
   display: grid;
   align-content: center;
@@ -253,10 +255,10 @@ header input {
 }
 
 .switch input:checked + .slider:before {
-  content: "On";
+  content: "Off";
   transform: translateX(100%);
   color: white;
-  background-color: rgb(63, 183, 63);
+  background-color: red;
 }
 
 .switch input {
@@ -266,6 +268,18 @@ header input {
 .keys-checkbox {
   flex-direction: column;
   gap:5px;
+}
+
+.slider .on {
+  color:#23e423;
+}
+
+.slider .off {
+  color:red;
+}
+
+.slider .on, .slider .off {
+  font-weight: 600;
 }
 
 .btn-record{
@@ -517,7 +531,7 @@ form input:focus {
   }
 
   .overlay {
-   min-height:162vh;
+   min-height:164vh;
   }
 
   .select {
