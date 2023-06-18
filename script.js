@@ -13,7 +13,7 @@ const btnSave = document.querySelector('.btn-save');
 const btnCancel = document.querySelector('.btn-cancel');
 const songUList = document.querySelector('.song-list ul');
 
-let defaultPath = "/tunes/acoustic_grand_piano/";  // By default the instrument is "Acoustic Grand Piano"
+let defaultPath = "/tunes/acoustic_grand_piano/";  // Instrumentul implicit este "Pian acustic"
 
 let allKeys = [];
 let audio = new Audio(defaultPath);
@@ -23,23 +23,23 @@ let elapsedTime = 0;
 let intervalId;
 let notesPlayed = [];
 
-const startChronometer = () => {   // Start chronometer
+const startChronometer = () => {   // Pornim cronometrul
   startTime = new Date().getTime();
   intervalId = setInterval(updateElapsedTime, 100);
 }
 
-const stopChronometer = () => {   // Stop chronometer
+const stopChronometer = () => {   // Oprim cronometrul
     clearInterval(intervalId);
 }
 
-const updateElapsedTime = () => {  // Update elapsed time
+const updateElapsedTime = () => {  // Timpul scurs de la pornirea cronometrului si pana la oprirea acestuia
   const currentTime = new Date().getTime();
   elapsedTime = Math.floor((currentTime - startTime) / 100);
 }
 
 const playTune = (key) => {
-    audio.src = defaultPath + `${key}.wav`;   // Passing audio src based on key pressed 
-    audio.play();  // Playing audio
+    audio.src = defaultPath + `${key}.wav`;   // Trecem sursa audio pe baza notei apasate 
+    audio.play();  // Redam audio
 
     if(btnRecord.classList.contains('record')) {
         notesPlayed.push(
@@ -51,35 +51,35 @@ const playTune = (key) => {
         )
     }
 
-    const clickedKey = document.querySelector(`[data-key="${key}"]`);    // Getting clicked key element
-    clickedKey.classList.add("active");   // Adding active class to the clicked key element
-    setTimeout(() => {   // Removing active class after 150 ms from the clicked key element
+    const clickedKey = document.querySelector(`[data-key="${key}"]`);    // Dam clic pe fiecare nota
+    clickedKey.classList.add("active");   // Adaugam o clasa "active" elementului HTML (care contine nota) pe care am dat clic
+    setTimeout(() => {   // Stergem clasa "active" dupa 150 ms din elementul HTML (care contine nota) pe care am dat clic
         clickedKey.classList.remove("active");
     }, 150);
 }
 
 pianoKeys.forEach(key => {
-    allKeys.push(key.dataset.key);    // Adding data-key value to the allKeys array
-    // Calling playTune function with passing data-key value as an argument
+    allKeys.push(key.dataset.key);    // Adaugam valoarea notei din "dataset" in matricea "allKeys"
+    // Apelam functia "playTune" trecand valoarea notei din "dataset" ca argument
     key.addEventListener("click", () => playTune(key.dataset.key));
 });
 
 const handleVolume = (e) => {
-    audio.volume = e.target.value;   // Passing the range slider value as an audio volume
+    audio.volume = e.target.value;   // Manipulam volumul
 }
 
 const showHideKeys = () => {
-// Toggling hide class from each key on the checkbox click
+// Afisam sau ascundem tastele pe baza clasei "hide" care se comuteaza
     pianoKeys.forEach(key => key.classList.toggle("hide"));
 }
 
 const pressedKey = (e) => {
-// If the pressed key is in the allKeys array, only call the playTune function
+// Daca valoarea notei apasate se afla in matricea "allKeys", apelam functia "playTune"
     if(allKeys.includes(e.key)) playTune(e.key);
 }
 
 const chosenInstrument = (e) => {
-// Chosen instrument based on selected input
+// Alegem instrumentul pe baza inputului selectat
     defaultPath = '/tunes/' + e.target.value + "/";
 }
 
@@ -87,7 +87,7 @@ const changeInstrument = (newInstrument) => {
     defaultPath = '/tunes/' + newInstrument + "/";
 }
 
-const getSongs = () => {  // Get the songs from the database through an API call
+const getSongs = () => {  // Obtinem cantecele din baza de data printr-un apel API
     fetch("http://127.0.0.1:8000/songs")
     .then((response) => response.text())
     .then((data) =>  
@@ -95,7 +95,7 @@ const getSongs = () => {  // Get the songs from the database through an API call
     );
 }
 
-const buildSongList = (data) => {  // Build the song list
+const buildSongList = (data) => {  // Construim lista cu cantece
     songUList.innerHTML = '';
     data.forEach((song, index) => {
         songUList.appendChild(
@@ -108,16 +108,16 @@ let pbStartTime = 0;
 let pbElapsedTime = 0;
 let pbIntervalId;
 
-const pbStartChronometer = (data) =>{   // Playback start chronometer
+const pbStartChronometer = (data) =>{   // Cronometrul butonului de redare
   pbStartTime = new Date().getTime();
   pbIntervalId = setInterval(() => pbUpdateElapsedTime(data), 100);
 }
 
-const pbStopChronometer = () => {  // Playback stop chronometer
+const pbStopChronometer = () => {  // Cronometrul butonului de oprire
     clearInterval(pbIntervalId);
 }
 
-const pbUpdateElapsedTime = (data) => {   // Playback update elapsed time
+const pbUpdateElapsedTime = (data) => {   // Timp scurs pentru actualizarea redarii
   const currentTime = new Date().getTime();
   pbElapsedTime = Math.floor((currentTime - pbStartTime) / 100);
   data.forEach(noteObject => {
@@ -129,19 +129,19 @@ const pbUpdateElapsedTime = (data) => {   // Playback update elapsed time
   });
 }
 
-const playback = (songId) => {   // Playback
+const playback = (songId) => {   // Redare
     clearInterval(pbIntervalId);
     fetch(`http://127.0.0.1:8000/notes/${songId}`)
     .then((response) => response.json())
     .then((data) => playSong(data));
 }
 
-const playSong = (data) => {  // Play song
+const playSong = (data) => {  // Redare cantec
     resetValues();
     pbStartChronometer(data);
 }
 
-const buildSongItem = (id, index, name, length) => {  // Build the song item
+const buildSongItem = (id, index, name, length) => {  // Construim cantecul
     let child = document.createElement("li");
     child.classList.add("song");
     child.innerHTML =  `<span class="song-title">${index}. ${name}: ${length / 10}s</span>
@@ -204,28 +204,28 @@ const buildSongItem = (id, index, name, length) => {  // Build the song item
 
 const displaySong = () => {
     songList.classList.toggle('active'); 
-    // Toggling active class from songList when we click the button displaySongs
+    // Comutam clasa "active" din "songList" cand dam clic pe butonul "displaySongs"
     getSongs();
 }
 
 const record = () => {
-    btnRecord.classList.add('record');  // Start recording by pressing the btnRecord
+    btnRecord.classList.add('record');  // Incepem inregistrarea prin apasarea butonului "btnRecord"
     startChronometer();
 }
 
 const stopRecord = () => {
-    btnRecord.classList.remove('record');   // Stop recording by pressing the btnStopRecord
+    btnRecord.classList.remove('record');   // Oprim inregistrarea prin apasarea butonului "btnStopRecord"
     stopChronometer();
 }
 
 const showForm = () => {
-    form.classList.add('active');   // Display the form after pressing the btnStopRecord
-    overlay.classList.add('active');  // Display the overlay between the form & keyboard
+    form.classList.add('active');   // Afisam formularul dupa apasarea butonului "btnStopRecord"
+    overlay.classList.add('active');  // Suprapunem un element transparent pentru a bloca accesul la claviatura si alte optiuni
     document.removeEventListener("keydown", pressedKey);
 }
 
-const saveSong = (e) => {  // Save the song by pressing the button Save
-    e.preventDefault();   // We prevent the browser default behavior
+const saveSong = (e) => {  // Salvam cantecul prin apasarea butonului "Save"
+    e.preventDefault();   // Prevenim comportamentul implicit al browserului
     if (input.value === "") {
         alert("Completează câmpul cu numele cântecului tău.");
         return false;
@@ -235,13 +235,13 @@ const saveSong = (e) => {  // Save the song by pressing the button Save
     closePopup();
 }
 
-const resetValues = () => {  // Reset values
+const resetValues = () => {  // Resetam valorile
     input.value='';
     elapsedTime = 0;
     notesPlayed = [];
 }
 
-const saveNotes = () => {  // Save notes
+const saveNotes = () => {  // Salvam notele
     fetch("http://127.0.0.1:8000/notes", {
         method: "POST",
         body: JSON.stringify(notesPlayed),
@@ -251,7 +251,7 @@ const saveNotes = () => {  // Save notes
     });
 }
 
-const sendCreateSongRequest = (name, length) => {  // Sending create song request through an API call
+const sendCreateSongRequest = (name, length) => {  // Trimitem cererea de creare a cantecului printr-un apel API
     fetch("http://127.0.0.1:8000/songs", {
         method: "POST",
         body: JSON.stringify({
@@ -267,13 +267,13 @@ const sendCreateSongRequest = (name, length) => {  // Sending create song reques
     .then( resetValues );
 }
 
-const cancelSong = (e) => {  // Cancel the song by pressing the button Cancel
-    e.preventDefault();  // We prevent the browser default behavior
+const cancelSong = (e) => {  // Anulam cantecul prin apasarea butonului "Cancel"
+    e.preventDefault();  // Prevenim comportamentul implicit al browserului
     closePopup();
     resetValues();
 }
 
-const deleteSong = (songId) => {  // Delete song
+const deleteSong = (songId) => {  // Stergem cantecul
     resetValues();
     pbStopChronometer();
     fetch(`http://127.0.0.1:8000/songs/${songId}`, {
@@ -286,8 +286,8 @@ const deleteSong = (songId) => {  // Delete song
 }
 
 const closePopup = () => {
-    form.classList.remove('active');   // Remove the form after pressing the btnCancel
-    overlay.classList.remove('active');  // Remove the overlay
+    form.classList.remove('active');   // Eliminam formularul dupa apasarea butonului "btnCancel"
+    overlay.classList.remove('active');  // Eliminam elementul suprapus
     document.addEventListener("keydown", pressedKey);
 }
 
